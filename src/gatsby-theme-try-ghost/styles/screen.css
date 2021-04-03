@@ -129,6 +129,7 @@ html.casper .site-header-background:before {
     z-index: 10;
     display: block;
     background: rgba(0,0,0,0.18);
+    filter: brightness(0.4);
 }
 
 html.casper .site-header-background:after {
@@ -509,6 +510,9 @@ html.casper .social-link:hover {
 
 html.casper .social-link svg {
     height: 1.8rem;
+}
+
+html.casper .social-link:not(.social-link-in):not(.social-link-gi):not(.social-link-ma) {
     fill: #fff;
 }
 
@@ -2870,10 +2874,6 @@ html.casper .site-footer-nav a:before {
 }
 
 html.casper .site-footer-nav a:first-of-type:before {
-    display: none;
-}
-
-.site-nav-logo, .site-title {
     display: none;
 }
 
