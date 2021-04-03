@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import TwitterIcon from 'gatsby-theme-try-ghost/src/components/common/icons/twitter-icon'
 import FacebookIcon from 'gatsby-theme-try-ghost/src/components/common/icons/facebook-icon'
-import InstagramIcon from '../../../images/icons/instagram'
-import GitHubIcon from '../../../images/icons/github'
-import MailIcon from '../../../images/icons/mail'
+import InstagramIcon from './icons/InstagramIcon'
+import GitHubIcon from './icons/GitHubIcon'
+import MailIcon from './icons/MailIcon'
 
 import { SocialRss } from 'gatsby-theme-try-ghost/src/components/common'
 
