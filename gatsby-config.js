@@ -56,6 +56,12 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+                failOnError: false
+            }
+        },
+        {
             resolve: `gatsby-theme-try-ghost`,
             options: {
                 ghostConfig: ghostConfig,
@@ -79,9 +85,6 @@ module.exports = {
         },
         {
             resolve: `gatsby-theme-ghost-members`,
-        },
-        {
-            resolve: `gatsby-plugin-sharp`,
         },
         {
             resolve: `gatsby-transformer-rehype`,
