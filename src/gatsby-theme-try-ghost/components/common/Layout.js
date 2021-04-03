@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Layout from 'gatsby-theme-try-ghost/components/common/Layout'
+import Layout from 'gatsby-theme-try-ghost/src/components/common/Layout'
 
 function NewLayout (props) {
     useEffect(() => {
