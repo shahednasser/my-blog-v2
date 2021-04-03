@@ -129,7 +129,6 @@ html.casper .site-header-background:before {
     z-index: 10;
     display: block;
     background: rgba(0,0,0,0.18);
-    filter: brightness(0.4);
 }
 
 html.casper .site-header-background:after {
@@ -143,6 +142,7 @@ html.casper .site-header-background:after {
     display: block;
     height: 140px;
     background: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0));
+    filter: brightness(0.4);
 }
 
 html.casper .site-header-background.no-image:before,
