@@ -1,0 +1,10 @@
+{
+    "development": {
+      "apiUrl": "https://shahednasserblog.herokuapp.com",
+      "contentApiKey": "15342b323f805f4bfb81d46cdb"
+    },
+    "production": {
+      "apiUrl": "https://shahednasserblog.herokuapp.com",
+      "contentApiKey": "15342b323f805f4bfb81d46cdb"
+    }
+  }
