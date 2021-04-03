@@ -81,6 +81,9 @@ module.exports = {
             resolve: `gatsby-theme-ghost-members`,
         },
         {
+            resolve: `gatsby-plugin-sharp`,
+        },
+        {
             resolve: `gatsby-transformer-rehype`,
             options: {
                 filter: node => (
@@ -94,12 +97,37 @@ module.exports = {
                     {
                         resolve: `gatsby-rehype-prismjs`,
                     },
+                    {
+                        resolve: `gatsby-rehype-inline-images`
+                    },
                 ],
             },
         },
         {
             resolve: `gatsby-plugin-gatsby-cloud`,
-        },        
+        },
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                // The property ID; the tracking code won't be generated without it
+                trackingId: "UA-149400351-5",
+                // Defines where to place the tracking script - `true` in the head and `false` in the body
+                head: true,
+                // Setting this parameter is optional
+                anonymize: true,
+                // Delays sending pageview hits on route update (in milliseconds)
+                pageTransitionDelay: 0,
+                // Defers execution of google analytics script after page load
+                defer: true
+            },
+        },
+        {
+            resolve: `gatsby-theme-ghost-toc`,
+            options: {
+                // Number of shown headline levels (optional, default: 2)
+                maxDepth: 2,
+            },
+        },   
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // This plugin is currently causing issues: https://github.com/gatsbyjs/gatsby/issues/25360
         //`gatsby-plugin-offline`,

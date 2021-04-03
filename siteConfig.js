@@ -1,6 +1,6 @@
 module.exports = {
     // Do not include a trailing slash!
-    siteUrl: `https://demo.jamify.org`,
+    siteUrl: `https://blog.shahednasser.com`,
 
     // Enable infinite scroll (default: true)
     infiniteScroll: true,
@@ -10,13 +10,13 @@ module.exports = {
     postsPerPage: 3,
 
     // This allows an alternative site title for meta data for pages.
-    siteTitleMeta: `Gatsby Starter Ghost CMS`,
+    siteTitleMeta: `Shahed Nasser's Blog`,
 
     // This allows an site description for meta data for pages.
-    siteDescriptionMeta: `Turn your Ghost blog into a flaring fast static site with Gatsby`,
+    siteDescriptionMeta: `Articles and Tutorials About Technology and Programming`,
 
     // Used for App and Offline manifest e.g. Mobile Home Screen
-    shortTitle: `Jamify`,
+    shortTitle: `Shahed Nasser's Blog`,
     siteIcon: `favicon.png`,
     backgroundColor: `#e9e9e9`,
     themeColor: `#15171A`,
