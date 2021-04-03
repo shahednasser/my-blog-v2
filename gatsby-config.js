@@ -56,12 +56,6 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-sharp`,
-            options: {
-                failOnError: false
-            }
-        },
-        {
             resolve: `gatsby-theme-try-ghost`,
             options: {
                 ghostConfig: ghostConfig,
@@ -99,9 +93,6 @@ module.exports = {
                     },
                     {
                         resolve: `gatsby-rehype-prismjs`,
-                    },
-                    {
-                        resolve: `gatsby-rehype-inline-images`
                     },
                 ],
             },
