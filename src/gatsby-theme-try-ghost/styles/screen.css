@@ -2872,6 +2872,10 @@ html.casper .site-footer-nav a:first-of-type:before {
     display: none;
 }
 
+.site-nav-logo, .site-title {
+    display: none;
+}
+
 /** CARBON ADS **/
 [id*=carbonads] * {
     margin: initial;

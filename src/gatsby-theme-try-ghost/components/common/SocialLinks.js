@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 import TwitterIcon from 'gatsby-theme-try-ghost/src/components/common/icons/twitter-icon'
 import FacebookIcon from 'gatsby-theme-try-ghost/src/components/common/icons/facebook-icon'
+import InstagramIcon from '../../../images/icons/instagram'
+import GitHubIcon from '../../../images/icons/github'
+import MailIcon from '../../../images/icons/mail'
 
 import { SocialRss } from 'gatsby-theme-try-ghost/src/components/common'
 
@@ -14,9 +17,9 @@ const SocialLinks = ({ site, siteUrl }) => {
         <React.Fragment>
             { site.facebook && <a href={ facebookUrl } className="social-link social-link-fb" target="_blank" rel="noopener noreferrer" title="Facebook"><FacebookIcon /></a>}
             { site.twitter && <a href={ twitterUrl } className="social-link social-link-tw" target="_blank" rel="noopener noreferrer" title="Twitter"><TwitterIcon /></a>}
-            <a className="site-nav-item" href="https://instagram.com/shahednasser95" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/instagram.svg" alt="Instagram" /></a>
-            <a className="site-nav-item" href="https://github.com/shahednasser" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/github.svg" alt="Github" /></a>
-            <a className="site-nav-item" href="mailto:shahednasser@gmail.com" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/mail.svg" alt="Email" /></a>
+            <a className="site-nav-item" href="https://instagram.com/shahednasser95" target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
+            <a className="site-nav-item" href="https://github.com/shahednasser" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+            <a className="site-nav-item" href="mailto:shahednasser@gmail.com" target="_blank" rel="noopener noreferrer"><MailIcon /></a>
             <SocialRss url={siteUrl} />
         </React.Fragment>
     )
