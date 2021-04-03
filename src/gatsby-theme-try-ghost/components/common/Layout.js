@@ -21,7 +21,7 @@ function NewLayout (props) {
         }
     }, []);
     
-    return <Layout props={props} />
+    return Layout(props)
 }
 
 export default NewLayout
