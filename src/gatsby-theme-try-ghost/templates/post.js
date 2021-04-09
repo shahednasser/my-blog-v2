@@ -131,6 +131,12 @@ const Post = ({ data, location, pageContext }) => {
                                     <RenderContent htmlAst={htmlAst} html={transformedHtml || post.html} />
                                 </section>
 
+                                <p className="connect-text">
+                                    <i>
+                                        If you would like to connect and talk more about this article or programming in general, you can find me on my twitter account <a href="https://twitter.com/shahednasserr" target="_blank">@shahednasserr</a>
+                                    </i>
+                                </p>
+
                                 <Subscribe />
 
                                 <div id="mlb2-3059009" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-3059009">
