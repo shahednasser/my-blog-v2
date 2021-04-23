@@ -31,8 +31,6 @@ const Search = () => {
     useEffect(() => {
 
         function handleFocus () {
-            console.log(document.activeElement, document.activeElement.closest('.search-bar'), document.activeElement.closest('.search-results'),
-            searchBarRef.current, searchResultsRef.current)
             setFocused(searchBarRef.current === document.activeElement ||
                 searchBarRef.current === document.activeElement.closest('.search-bar') ||
                 searchResultsRef.current === document.activeElement ||
