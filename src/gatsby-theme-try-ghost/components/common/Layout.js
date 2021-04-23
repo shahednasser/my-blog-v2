@@ -5,10 +5,9 @@ import { useMonetizationState } from 'react-web-monetization'
 function NewLayout (props) {
     const monetization = useMonetizationState()
 
-    const d = document
-
     function showAds () {
-        const s = d.createElement('script'),
+        const d = document,
+            s = d.createElement('script'),
             previousAds = d.querySelectorAll('[id^=carbonads]'),
             previousScript = d.getElementById('_carbonads_js')
 
@@ -30,6 +29,8 @@ function NewLayout (props) {
     }
 
     function hideAds () {
+        const d = document
+
         if (d.getElementById('_carbonads_js')) {
             d.body.removeChild('_carbonads_js')
         }
