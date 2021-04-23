@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import Layout from 'gatsby-theme-try-ghost/src/components/common/Layout'
+import { useMonetizationState } from 'react-web-monetization'
 
 function NewLayout (props) {
-    useEffect(() => {
-        const d = document
+    const monetization = useMonetizationState()
 
-        function showAds () {
-            const s = d.createElement('script'),
-              previous = d.getElementById('carbonads');
+    function showAds () {
+        const d = document,
+            s = d.createElement('script'),
+            previous = d.getElementById('carbonads');
 
             if (previous) {
                 d.body.removeChild(previous)
@@ -17,31 +18,33 @@ function NewLayout (props) {
             s.id = '_carbonads_js';
             s.setAttribute('async', 'async');
             d.body.appendChild(s);
-        }
-        
-        function monetizationStart (event) {
-            if (!document.monetization.state === "started") {
-                showAds();
-            }
-        }
+    }
 
-        if (document.monetization) {
-            document.monetization.addEventListener("monetizationstart", monetizationStart);
+    function hideAds () {
+        if (d.getElementById('_carbonads_js')) {
+            d.body.removeChild('_carbonads_js')
+        }
+        if (d.getElementById('carbonads')) {
+            d.body.removeChild('carbonads')
+        }
+    }
+
+    useEffect(() => {
+        showAds ();
+
+        return () => {
+            hideAds();
+        }
+    }, []);
+
+    useEffect(() => {
+        if (monetization.state === 'started' || monetization.state === 'pending') {
+            hideAds();
         } else {
             showAds();
         }
+    }, [monetization.state])
 
-        return () => {
-            if (d.getElementById('_carbonads_js')) {
-                d.body.removeChild('_carbonads_js')
-            }
-            if (d.getElementById('carbonads')) {
-                d.body.removeChild('carbonads')
-            }
-            document.monetization.removeEventListener("monetizationstart", monetizationStart);
-        }
-    }, []);
-    
     return Layout(props)
 }
 
