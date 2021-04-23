@@ -2877,6 +2877,78 @@ html.casper .site-footer-nav a:first-of-type:before {
     display: none;
 }
 
+/** SEARCH BAR **/
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-results {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    z-index: 100;
+    border-radius: 5px;
+    color: #222;
+    background-color: #e4e4e4;
+    height: 40vh;
+    overflow-y: auto;
+    box-shadow: 1px 1px 4px rgb(132 132 132 / 58%);
+}
+
+.search-results:not(.show) {
+    display: none;
+}
+
+.search-results ul {
+    list-style: none !important;
+    padding: 0;
+}
+
+.search-results li {
+    padding-bottom: 20px;
+    border-bottom: 1px solid;
+}
+
+.search-results li a {
+    color: #222 !important;
+}
+
+.search-results li a:not(:hover) {
+    text-decoration: none;
+}
+
+.search-bar {
+    border-radius: 25px;
+    border: 0;
+    padding-left: 13px;
+    padding-bottom: 3px;
+    margin: 0 0 10px auto;
+    display: block;
+    margin-top: 13px;
+    background-color: #e4e4e4;
+    box-shadow: 1px 1px 4px rgb(132 132 132 / 58%);
+    color: #222;
+}
+
+.home-template .post-feed {
+    padding-top: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+    .search-results {
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .search-results {
+        max-width: 90%;
+    }
+}
+
+/** END SEARCH BAR **/
+
 /** CARBON ADS **/
 [id*=carbonads] * {
     margin: initial;
@@ -2942,58 +3014,66 @@ html.casper .site-footer-nav a:first-of-type:before {
     bottom: 0;
     right: 0;
   }
-  
+
   @media screen and (max-width: 991px) {
       [id*=carbonads] {
           bottom: 45px !important;
       }
   }
-  
+
   /** END CARBON **/
 
-@media (prefers-color-scheme: dark) {
-    [id*=carbonads] {
+  /** DARK MODE **/
+    .dark [id*=carbonads] {
         background-color: hsl(0, 0%, 10%);
         box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.5);
     }
 
-    [id*=carbonads] a,
-    [id*=carbonads] a:hover {
+    .dark [id*=carbonads] a,
+    .dark [id*=carbonads] a:hover {
         color: #ddd;
     }
 
-    [id*=carbonads] .carbon-poweredby {
+    .dark [id*=carbonads] .carbon-poweredby {
         background: #1e2021;
         color: #aaa;
     }
-}
 
-.dark [id*=carbonads] {
-    background-color: hsl(0, 0%, 10%);
-    box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.5);
-}
-
-.dark [id*=carbonads] a,
-.dark [id*=carbonads] a:hover {
-    color: #ddd;
-}
-
-.dark [id*=carbonads] .carbon-poweredby {
-    background: #1e2021;
-    color: #aaa;
-}
-
-/* .dark .suggested-read,
-.dark .suggested-read h4 {
-    color: var(--dm-bg-color);
-} */
-
-@media (max-width: 650px) {
-    html.casper .site-footer-content {
-        flex-direction: column;
+    .dark .search-bar {
+        background-color: #30333a;
+        box-shadow: 1px 1px 4px rgb(23 23 23 / 58%);
+        color: #fff;
     }
 
-    html.casper .site-footer-nav a:first-child {
-        margin-left: 0;
+    .dark .search-results {
+        box-shadow: 1px 1px 4px rgb(23 23 23 / 58%);
     }
-}
+
+    .dark .search-results {
+        background-color: #30333A;
+    }
+
+    .dark .search-results li {
+        border-bottom-color: #484d56;
+    }
+
+    .dark .search-results li a {
+        color: #fff !important;
+    }
+
+    /* .dark .suggested-read,
+    .dark .suggested-read h4 {
+        color: var(--dm-bg-color);
+    } */
+
+    /** END DARK MODE **/
+
+    @media (max-width: 650px) {
+        html.casper .site-footer-content {
+            flex-direction: column;
+        }
+
+        html.casper .site-footer-nav a:first-child {
+            margin-left: 0;
+        }
+    }
