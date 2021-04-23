@@ -8,10 +8,18 @@ function NewLayout (props) {
     function showAds () {
         const d = document,
             s = d.createElement('script'),
-            previous = d.getElementById('carbonads');
+            previousAds = d.querySelectorAll('[id^=carbonads]'),
+            previousScript = d.getElementById('_carbonads_js')
 
-            if (previous) {
-                d.body.removeChild(previous)
+            if (previousAds && previousAds.length) {
+                previousAds.forEach((previous) => {
+                    console.log(previous)
+                    d.body.removeChild(previous)
+                })
+            }
+
+            if (previousScript) {
+                d.body.removeChild(previousScript)
             }
 
             s.src = 'https://cdn.carbonads.com/carbon.js?serve=CEBIL27J&placement=blogshahednassercom';
