@@ -5,9 +5,10 @@ import { useMonetizationState } from 'react-web-monetization'
 function NewLayout (props) {
     const monetization = useMonetizationState()
 
+    const d = document
+
     function showAds () {
-        const d = document,
-            s = d.createElement('script'),
+        const s = d.createElement('script'),
             previousAds = d.querySelectorAll('[id^=carbonads]'),
             previousScript = d.getElementById('_carbonads_js')
 
