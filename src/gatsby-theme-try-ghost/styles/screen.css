@@ -3077,3 +3077,9 @@ html.casper .site-footer-nav a:first-of-type:before {
             margin-left: 0;
         }
     }
+
+    /** TABLE OF CONTENT **/
+    [class^=TableOfContentStyles__TocAside] {
+            max-height: 59vh;
+            overflow-y: auto;
+    }
