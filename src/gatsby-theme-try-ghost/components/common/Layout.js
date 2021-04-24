@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import Layout from 'gatsby-theme-try-ghost/src/components/common/Layout'
-import { useMonetizationState } from 'react-web-monetization'
 
 function NewLayout (props) {
-    const monetization = useMonetizationState()
-
-    function showAds () {
+    useEffect(() => {
         const d = document,
             s = d.createElement('script'),
             previousAds = d.querySelectorAll('[id^=carbonads]'),
@@ -26,34 +23,16 @@ function NewLayout (props) {
             s.id = '_carbonads_js';
             s.setAttribute('async', 'async');
             d.body.appendChild(s);
-    }
-
-    function hideAds () {
-        const d = document
-
-        if (d.getElementById('_carbonads_js')) {
-            d.body.removeChild(d.getElementById('_carbonads_js'))
-        }
-        if (d.getElementById('carbonads')) {
-            d.body.removeChild(d.getElementById('carbonads'))
-        }
-    }
-
-    useEffect(() => {
-        showAds ();
 
         return () => {
-            hideAds();
+            if (d.getElementById('_carbonads_js')) {
+                d.body.removeChild(d.getElementById('_carbonads_js'))
+            }
+            if (d.getElementById('carbonads')) {
+                d.body.removeChild(d.getElementById('carbonads'))
+            }
         }
     }, []);
-
-    useEffect(() => {
-        if (monetization.state === 'started' || monetization.state === 'pending') {
-            hideAds();
-        } else {
-            showAds();
-        }
-    }, [monetization.state])
 
     return Layout(props)
 }

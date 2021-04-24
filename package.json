@@ -37,7 +37,6 @@
     "gatsby-plugin-netlify": "^3.0.0",
     "gatsby-plugin-preact": "^5.0.0",
     "gatsby-plugin-sharp": "^3.2.0",
-    "gatsby-plugin-web-monetization": "^1.2.0",
     "gatsby-rehype-ghost-links": "^2.0.0",
     "gatsby-rehype-inline-images": "^2.0.0",
     "gatsby-rehype-prismjs": "^2.0.0",
@@ -51,8 +50,7 @@
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-use-flexsearch": "^0.1.1",
-    "react-web-monetization": "0.0.13"
+    "react-use-flexsearch": "^0.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
