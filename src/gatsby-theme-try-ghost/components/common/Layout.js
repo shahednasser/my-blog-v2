@@ -32,10 +32,10 @@ function NewLayout (props) {
         const d = document
 
         if (d.getElementById('_carbonads_js')) {
-            d.body.removeChild('_carbonads_js')
+            d.body.removeChild(d.getElementById('_carbonads_js'))
         }
         if (d.getElementById('carbonads')) {
-            d.body.removeChild('carbonads')
+            d.body.removeChild(d.getElementById('carbonads'))
         }
     }
 
