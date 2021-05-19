@@ -288,6 +288,18 @@ html.casper .site-nav-main {
     background: color-mod(var(--darkgrey) l(-5%));
 }
 
+html.casper .support-banner {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px;
+    background-color: #2A7A3D;
+    color: #fff;
+    text-align: center;
+}
+
 html.casper .site-nav {
     position: relative;
     z-index: 100;
@@ -569,7 +581,8 @@ html.casper .rss-button svg {
 
 /* Special behaviors for home navigation */
 
-html.casper .home-template .site-nav-main {
+html.casper .home-template .site-nav-main,
+html.casper .home-template .support-banner {
     z-index: 100;
 }
 
