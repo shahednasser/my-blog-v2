@@ -15,6 +15,7 @@ import { StickyNavContainer, OverlayContainer } from 'gatsby-theme-try-ghost/src
 import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
 
 import { PostClass } from 'gatsby-theme-try-ghost/src/components/common/helpers'
+import useCarbon from '../utils/useCarbon'
 
 /**
 * Single post view (/:slug)
@@ -38,6 +39,8 @@ const Post = ({ data, location, pageContext }) => {
     const toc = post.childHtmlRehype && post.childHtmlRehype.tableOfContents || []
     const htmlAst = post.childHtmlRehype && post.childHtmlRehype.htmlAst
     const transformedHtml = post.childHtmlRehype && post.childHtmlRehype.html
+
+    useCarbon('figure.post-full-image', 'after')
 
     // Collection paths must be retrieved from pageContext
     previewPosts.forEach(({ node }) => node.collectionPath = pageContext.collectionPaths[node.id])

@@ -4,12 +4,13 @@ import { graphql } from 'gatsby'
 import queryString from "query-string"
 
 import { PostView, HeaderIndex } from 'gatsby-theme-try-ghost/src/components/common'
-import Layout from '../components/common/Layout'
+import Layout from 'gatsby-theme-try-ghost/src/components/common/Layout'
 import { StickyNavContainer, OverlayContainer } from 'gatsby-theme-try-ghost/src/components/common/effects'
 import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
 import Search from '../components/common/Search'
 
 import { GlobalStateContext } from "gatsby-theme-try-ghost/src/context/GlobalState"
+import useCarbon from '../utils/useCarbon'
 
 /**
 * Main index page (home page)
@@ -20,6 +21,7 @@ import { GlobalStateContext } from "gatsby-theme-try-ghost/src/context/GlobalSta
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
     const parsedQuery = location.search && location.search.length > 0 && queryString.parse(location.search)
+    useCarbon()
     return (
         <GlobalStateContext.Consumer>{ g => (
             <React.Fragment>

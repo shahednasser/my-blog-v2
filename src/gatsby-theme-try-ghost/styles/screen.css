@@ -2974,13 +2974,11 @@ html.casper .site-footer-nav a:first-of-type:before {
   }
   [id*=carbonads] {
       display: flex;
-      max-width: 330px;
       background-color: hsl(0, 0%, 98%);
       box-shadow: 0 1px 4px 1px hsla(0, 0%, 0%, 0.1);
       z-index: 100;
       bottom: 30px;
       right: 30px;
-      position: fixed;
   }
   [id*=carbonads] a {
     color: inherit;
@@ -3028,9 +3026,25 @@ html.casper .site-footer-nav a:first-of-type:before {
     right: 0;
   }
 
+  @media screen and (min-width: 992px) {
+      [id*=carbonads] {
+        position: fixed;
+        max-width: 330px;
+      }
+  }
+
   @media screen and (max-width: 991px) {
       [id*=carbonads] {
-          bottom: 45px !important;
+          margin-bottom: 15px;
+      }
+
+      .home-template [id*=carbonads] {
+        position: fixed;
+        max-width: 330px;
+      }
+
+      script[id*=carbonads] {
+          display: none;
       }
   }
 
