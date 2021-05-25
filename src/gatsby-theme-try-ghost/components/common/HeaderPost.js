@@ -10,9 +10,6 @@ const HeaderPost = ({ title, sticky, overlay }) => (
                 <SiteNav className="site-nav" postTitle={title} overlay={overlay}/>
             </div>
         </div>
-        <div className="support-banner">
-            This website supports Palestine. #FreePalestine
-        </div>
     </header>
 )
 
