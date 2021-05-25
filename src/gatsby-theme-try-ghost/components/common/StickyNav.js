@@ -6,9 +6,6 @@ const NewStickyNav = ({className, overlay}) => {
     return (
         <div>
             <StickyNav className={className} overlay={overlay} />
-            <div className="support-banner">
-                This website supports Palestine. #FreePalestine
-            </div>
         </div>
     )
 }
