@@ -3111,11 +3111,19 @@ html.casper .site-footer-nav a:first-of-type:before {
             overflow-y: auto;
     }
 
-    .iframely-embed {
-        flex: 1;
-    }
-
     .iframely-embed:not(:last-child) {
         margin-right: 10px;
         margin-bottom: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .iframely-embed {
+            width: 48%;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .iframely-embed {
+            width: 100%;
+        }
     }
