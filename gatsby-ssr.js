@@ -1,16 +1,17 @@
-var React = require("react");
-
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
-    /**
-     * @type {any[]} headComponents
-     */
-    const headComponents = getHeadComponents();
+    if (process.env.NODE_ENV !== 'production')
+        return;
 
-    headComponents.sort((a, b) => {
-        if (a.props && a.props["data-react-helmet"]) {
-            return 0;
+    let hc = getHeadComponents();
+    hc.forEach(el => {
+        if (el.type === 'style') {
+            el.type = 'link';
+            el.props['href'] = el.props['data-href'];
+            el.props['rel'] = 'stylesheet';
+            el.props['type'] = 'text/css';
+
+            delete el.props['data-href'];
+            delete el.props['dangerouslySetInnerHTML'];
         }
-        return 1;
-    });
-    replaceHeadComponents(headComponents);
-};
+    })
+}
