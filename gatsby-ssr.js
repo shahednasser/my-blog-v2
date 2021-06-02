@@ -28,8 +28,8 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
         }
         return 0
     })
-    if (process.env.NODE_ENV === 'production') {
-        hc.forEach(el => {
+    hc.forEach(el => {
+        if (process.env.NODE_ENV === 'production') {
             if (el.type === 'style') {
                 el.type = 'link';
                 el.props['href'] = el.props['data-href'];
@@ -39,8 +39,11 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
                 delete el.props['data-href'];
                 delete el.props['dangerouslySetInnerHTML'];
             }
-        })
-    }
+        }
+        if (el.props && el.props["data-react-helmet"]) {
+            delete el.props["data-react-helmet"]
+        }
+    })
 
     replaceHeadComponents(hc)
 }
