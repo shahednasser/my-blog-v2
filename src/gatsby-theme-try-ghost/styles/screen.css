@@ -3117,4 +3117,5 @@ html.casper .site-footer-nav a:first-of-type:before {
 
     .iframely-embed:not(:last-child) {
         margin-right: 10px;
+        margin-bottom: 10px;
     }
