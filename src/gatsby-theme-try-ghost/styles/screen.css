@@ -3110,3 +3110,11 @@ html.casper .site-footer-nav a:first-of-type:before {
             max-height: 59vh;
             overflow-y: auto;
     }
+
+    .iframely-embed {
+        flex: 1;
+    }
+
+    .iframely-embed:not(:last-child) {
+        margin-right: 10px;
+    }
