@@ -146,7 +146,6 @@ module.exports = {
                                 id
                                 slug
                                 title
-                                plaintext
                             }
                         }
                     }
@@ -160,7 +159,7 @@ module.exports = {
                 // List of keys to index. The values of the keys are taken from the
                 // normalizer function below.
                 // Default: all fields
-                index: ['title', 'body'],
+                index: ['title'],
 
                 // List of keys to store and make available in your UI. The values of
                 // the keys are taken from the normalizer function below.
@@ -175,8 +174,7 @@ module.exports = {
                 data.allGhostPost.edges.map((edge) => ({
                     id: edge.node.id,
                     path: edge.node.slug,
-                    title: edge.node.title,
-                    body: edge.node.plaintext,
+                    title: edge.node.title
                 })),
             },
         },
