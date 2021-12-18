@@ -40,7 +40,7 @@ const Post = ({ data, location, pageContext }) => {
     const htmlAst = post.childHtmlRehype && post.childHtmlRehype.htmlAst
     const transformedHtml = post.childHtmlRehype && post.childHtmlRehype.html
 
-    useCarbon('figure.post-full-image', 'after')
+    useCarbon(`figure.post-full-image`, `after`)
 
     // Collection paths must be retrieved from pageContext
     previewPosts.forEach(({ node }) => node.collectionPath = pageContext.collectionPaths[node.id])
@@ -53,25 +53,25 @@ const Post = ({ data, location, pageContext }) => {
 
     useEffect(() => {
         const d = document,
-              ts = d.createElement('script');
+            ts = d.createElement(`script`)
 
-        ts.src = 'https://platform-api.sharethis.com/js/sharethis.js#property=5fa59a268fbbd6001256e36a&product=inline-share-buttons';
-        ts.setAttribute('async', 'async');
-        (d.head || d.body).appendChild(ts);
+        ts.src = `https://platform-api.sharethis.com/js/sharethis.js#property=5fa59a268fbbd6001256e36a&product=inline-share-buttons`
+        ts.setAttribute(`async`, `async`);
+        (d.head || d.body).appendChild(ts)
 
         return () => {
-          if (d.body.contains(ts)) {
-            d.body.removeChild(ts);
-          }
-
-          const stickyShare = d.getElementsByClassName("st-sticky-share-buttons");
-          if (stickyShare.length) {
-            for (let i = 0; i < stickyShare.length; i++) {
-              d.body.removeChild(stickyShare[i]);
+            if (d.body.contains(ts)) {
+                d.body.removeChild(ts)
             }
-          }
+
+            const stickyShare = d.getElementsByClassName(`st-sticky-share-buttons`)
+            if (stickyShare.length) {
+                for (let i = 0; i < stickyShare.length; i++) {
+                    d.body.removeChild(stickyShare[i])
+                }
+            }
         }
-    }, []);
+    }, [])
 
     return (
         <React.Fragment>
@@ -136,7 +136,7 @@ const Post = ({ data, location, pageContext }) => {
 
                                 <p className="connect-text">
                                     <i>
-                                        If you would like to connect and talk more about this article or programming in general, you can find me on my twitter account <a href="https://twitter.com/shahednasserr" target="_blank">@shahednasserr</a>
+                                        If you like my content and want to support me, please share this article on your social media or <a href="https://www.buymeacoffee.com/shahednasser" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>!
                                     </i>
                                 </p>
 
@@ -145,45 +145,45 @@ const Post = ({ data, location, pageContext }) => {
                                 <div id="mlb2-3059009" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-3059009">
                                     <div className="ml-form-align-center">
                                         <div className="ml-form-embedWrapper embedForm">
-                                        <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
-                                            <div className="ml-form-embedContent">
-                                            <h4>Subscribe to Newsletter</h4>
-                                            <p>Subscribe to the newsletter to be notified of new tutorials and articles!</p>
-                                            </div>
-                                            <form className="ml-block-form" action="https://static.mailerlite.com/webforms/submit/t8p8l2" data-code="t8p8l2" method="post" target="_blank">
-                                            <div className="ml-form-formContent horozintalForm">
-                                                <div className="ml-form-horizontalRow">
-                                                <div className="ml-input-horizontal">
-                                                    <div style={{width: "100%"}} className="horizontal-fields">
-                                                    <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                                                        <input type="email" className="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autoComplete="email" />
+                                            <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+                                                <div className="ml-form-embedContent">
+                                                    <h4>Subscribe to Newsletter</h4>
+                                                    <p>Subscribe to the newsletter to be notified of new tutorials and articles!</p>
+                                                </div>
+                                                <form className="ml-block-form" action="https://static.mailerlite.com/webforms/submit/t8p8l2" data-code="t8p8l2" method="post" target="_blank">
+                                                    <div className="ml-form-formContent horozintalForm">
+                                                        <div className="ml-form-horizontalRow">
+                                                            <div className="ml-input-horizontal">
+                                                                <div style={{ width: `100%` }} className="horizontal-fields">
+                                                                    <div className="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                                        <input type="email" className="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autoComplete="email" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="ml-button-horizontal primary">
+                                                                <button type="submit" className="primary">Subscribe</button>
+                                                                <button disabled="disabled" style={{ display: `none` }} type="button" className="loading"> <div className="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div> </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div className="ml-form-embedPermissions">
+                                                        <div className="ml-form-embedPermissionsContent horizontal privacy-policy">
+                                                            <p>You can unsubscribe anytime.</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="ml-button-horizontal primary">
-                                                    <button type="submit" className="primary">Subscribe</button>
-                                                    <button disabled="disabled" style={{display: "none"}} type="button" className="loading"> <div className="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div> </button>
-                                                </div>
+                                                    <input type="hidden" name="ml-submit" value="1" />
+                                                    <div className="ml-mobileButton-horizontal">
+                                                        <button type="submit" className="primary">Subscribe</button>
+                                                        <button disabled="disabled" style={{ display: `none` }} type="button" className="loading"> <div className="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div> </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div className="ml-form-successBody row-success" style={{ display: `none` }}>
+                                                <div className="ml-form-successContent">
+                                                    <h4>Thank you!</h4>
+                                                    <p>You have successfully joined our subscriber list.</p>
                                                 </div>
                                             </div>
-                                            <div className="ml-form-embedPermissions">
-                                                <div className="ml-form-embedPermissionsContent horizontal privacy-policy">
-                                                <p>You can unsubscribe anytime.</p>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="ml-submit" value="1" />
-                                            <div className="ml-mobileButton-horizontal">
-                                                <button type="submit" className="primary">Subscribe</button>
-                                                <button disabled="disabled" style={{display: "none"}} type="button" className="loading"> <div className="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div> </button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                        <div className="ml-form-successBody row-success" style={{display: "none"}}>
-                                            <div className="ml-form-successContent">
-                                            <h4>Thank you!</h4>
-                                            <p>You have successfully joined our subscriber list.</p>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
