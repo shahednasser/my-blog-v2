@@ -6,6 +6,7 @@ import FacebookIcon from 'gatsby-theme-try-ghost/src/components/common/icons/fac
 import InstagramIcon from './icons/InstagramIcon'
 import GitHubIcon from './icons/GitHubIcon'
 import MailIcon from './icons/MailIcon'
+import TelegramIcon from './icons/TelegramIcon'
 
 import { SocialRss } from 'gatsby-theme-try-ghost/src/components/common'
 import CoffeeIcon from './icons/CoffeeIcon'
@@ -22,6 +23,7 @@ const SocialLinks = ({ site, siteUrl }) => {
             <a className="social-link social-link-gi" href="https://github.com/shahednasser" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
             <a className="social-link social-link-gi" href="https://www.buymeacoffee.com/shahednasser" target="_blank" rel="noopener noreferrer" title="Buy me A Coffee"><CoffeeIcon /></a>
             <a className="social-link social-link-ma" href="mailto:shahednasser@gmail.com" target="_blank" rel="noopener noreferrer"><MailIcon /></a>
+            <a className="social-link social-link-tl" href="https://t.me/shahednasser" target="_blank" rel="noopener noreferrer"><TelegramIcon /></a>
             <SocialRss url={siteUrl} />
         </React.Fragment>
     )

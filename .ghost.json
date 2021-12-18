@@ -1,10 +1,10 @@
 {
     "development": {
       "apiUrl": "https://backend.shahednasser.com",
-      "contentApiKey": "03c4333e212b9850b0d1680a40"
+      "contentApiKey": "3efe8b63efd70fdc08d19beec2"
     },
     "production": {
       "apiUrl": "https://backend.shahednasser.com",
-      "contentApiKey": "03c4333e212b9850b0d1680a40"
+      "contentApiKey": "3efe8b63efd70fdc08d19beec2"
     }
   }

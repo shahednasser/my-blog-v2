@@ -47,7 +47,7 @@ const Search = () => {
     return (
         <div class="inner search-wrapper">
         <input type="text" name="query" className="search-bar"
-            placeholder="Search..." onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search..." onChange={(event) => setQuery(event.target.value.toLowerCase())}
             autocomplete="off" ref={searchBarRef} />
         <div class="search-results" ref={searchResultsRef}>
             <ul>
