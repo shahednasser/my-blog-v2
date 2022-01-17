@@ -22,6 +22,8 @@ const AuthorList = ({ authors, isPost }) => {
                 const profileImg = author.profileImageSharp && author.profileImageSharp.publicURL || author.profile_image
                 const fluidProfileImg = author.profileImageSharp && author.profileImageSharp.childImageSharp && author.profileImageSharp.childImageSharp.fluid
 
+                console.log(author, fluidProfileImg)
+
                 return (
                     <HoverOnAvatar key={i} activeClass="hovered" render={ hover => (
                         <li key={i} ref={hover.anchorRef} className="author-list-item">
