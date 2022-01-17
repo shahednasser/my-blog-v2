@@ -110,6 +110,8 @@ const Post = ({ data, location, pageContext }) => {
                                             className="kg-card kg-code-card"
                                             fluid={fluidFeatureImg}
                                             alt={post.title}
+                                            loading="eager"
+                                            durationFadeIn={0}
                                         />
                                     </figure>
                                 }
