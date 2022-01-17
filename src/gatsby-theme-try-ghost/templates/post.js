@@ -29,7 +29,6 @@ const Post = ({ data, location, pageContext }) => {
     const { basePath } = useOptions()
     const text = get(useLang())
     const post = data.customPost
-    console.log(post)
     const prevPost = data.prev
     const nextPost = data.next
     const previewPosts = data.allGhostPost.edges
