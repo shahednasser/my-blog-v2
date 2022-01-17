@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
@@ -8,11 +8,13 @@ import { resolveUrl } from 'gatsby-theme-try-ghost/src/utils/routing'
 import useOptions from 'gatsby-theme-try-ghost/src/utils/use-options'
 import { useLang, get } from 'gatsby-theme-try-ghost/src/utils/use-lang'
 
-import { Layout, HeaderPost, AuthorList, PreviewPosts, ImgSharp, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
+import { Layout, HeaderPost, AuthorList, PreviewPosts, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
 import { Comments, TableOfContents, Subscribe } from 'gatsby-theme-try-ghost/src/components/common'
 
 import { StickyNavContainer, OverlayContainer } from 'gatsby-theme-try-ghost/src/components/common/effects'
 import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
+
+import Img from 'gatsby-image'
 
 import { PostClass } from 'gatsby-theme-try-ghost/src/components/common/helpers'
 import useCarbon from '../utils/useCarbon'
@@ -50,28 +52,6 @@ const Post = ({ data, location, pageContext }) => {
     if (nextPost) {
         nextPost.collectionPath = pageContext.collectionPaths[nextPost.id]
     }
-
-    useEffect(() => {
-        const d = document,
-            ts = d.createElement(`script`)
-
-        ts.src = `https://platform-api.sharethis.com/js/sharethis.js#property=5fa59a268fbbd6001256e36a&product=inline-share-buttons`
-        ts.setAttribute(`async`, `async`);
-        (d.head || d.body).appendChild(ts)
-
-        return () => {
-            if (d.body.contains(ts)) {
-                d.body.removeChild(ts)
-            }
-
-            const stickyShare = d.getElementsByClassName(`st-sticky-share-buttons`)
-            if (stickyShare.length) {
-                for (let i = 0; i < stickyShare.length; i++) {
-                    d.body.removeChild(stickyShare[i])
-                }
-            }
-        }
-    }, [])
 
     return (
         <React.Fragment>
@@ -125,7 +105,12 @@ const Post = ({ data, location, pageContext }) => {
 
                                 { featImg &&
                                     <figure className="post-full-image">
-                                        <ImgSharp fluidClass="kg-card kg-code-card" fluidImg={fluidFeatureImg} srcImg={featImg} title={post.title}/>
+                                        <Img
+                                            style={{ position: `relative` }}
+                                            className="kg-card kg-code-card"
+                                            fluid={fluidFeatureImg}
+                                            alt={post.title}
+                                        />
                                     </figure>
                                 }
 
