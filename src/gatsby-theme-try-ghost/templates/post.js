@@ -28,12 +28,13 @@ import useCarbon from '../utils/useCarbon'
 const Post = ({ data, location, pageContext }) => {
     const { basePath } = useOptions()
     const text = get(useLang())
-    const post = data.ghostPost
+    const post = data.customPost
+    console.log(post)
     const prevPost = data.prev
     const nextPost = data.next
     const previewPosts = data.allGhostPost.edges
     const readingTime = readingTimeHelper(post).replace(`min read`,text(`MIN_READ`))
-    const featImg = post.featureImageSharp && post.featureImageSharp.publicURL || post.feature_image
+    const featImg = post.featureImageSharp && post.featureImageSharp.publicURL || post.featureImageSharp
     const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.childImageSharp && post.featureImageSharp.childImageSharp.fluid
     const postClass = PostClass({ tags: post.tags, isFeatured: featImg, isImage: featImg && true })
     const primaryTagCount = pageContext.primaryTagCount
@@ -189,6 +190,7 @@ const Post = ({ data, location, pageContext }) => {
 
 Post.propTypes = {
     data: PropTypes.shape({
+        customPost: PropTypes.object.isRequired,
         ghostPost: PropTypes.object.isRequired,
         prev: PropTypes.object,
         next: PropTypes.object,
@@ -202,6 +204,22 @@ export default Post
 
 export const postQuery = graphql`
     query($slug: String!, $prev: String!, $next: String!, $tag: String!, $limit: Int!, $skip: Int!) {
+        customPost: ghostPost(slug: {eq: $slug}) {
+            ...GhostPostFields
+            featureImageSharp {
+                base
+                publicURL
+                imageMeta {
+                    width
+                    height
+                }
+                childImageSharp {
+                    fluid(maxWidth: 1040, quality: 90) {
+                        ...GatsbyImageSharpFluid_withWebp_noBase64
+                    }
+                }
+            }
+        }
         ghostPost: ghostPost(slug: { eq: $slug }) {
             ...GhostPostFields
         }
