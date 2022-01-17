@@ -101,7 +101,7 @@ module.exports = {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
                 // The property ID; the tracking code won't be generated without it
-                trackingId: "UA-149400351-5",
+                trackingId: `UA-149400351-5`,
                 // Defines where to place the tracking script - `true` in the head and `false` in the body
                 head: true,
                 // Setting this parameter is optional
@@ -109,7 +109,7 @@ module.exports = {
                 // Delays sending pageview hits on route update (in milliseconds)
                 pageTransitionDelay: 0,
                 // Defers execution of google analytics script after page load
-                defer: true
+                defer: true,
             },
         },
         {
@@ -120,21 +120,21 @@ module.exports = {
             },
         },
         {
-            resolve: 'gatsby-plugin-local-search',
+            resolve: `gatsby-plugin-local-search`,
             options: {
                 // A unique name for the search index. This should be descriptive of
                 // what the index contains. This is required.
-                name: 'pages',
+                name: `pages`,
 
                 // Set the search engine to create the index. This is required.
                 // The following engines are supported: flexsearch, lunr
-                engine: 'flexsearch',
+                engine: `flexsearch`,
 
                 // Provide options to the engine. This is optional and only recommended
                 // for advanced users.
                 //
                 // Note: Only the flexsearch engine supports options.
-                engineOptions: 'speed',
+                engineOptions: `speed`,
 
                 // GraphQL query used to fetch all data for the search index. This is
                 // required.
@@ -154,34 +154,35 @@ module.exports = {
 
                 // Field used as the reference value for each document.
                 // Default: 'id'.
-                ref: 'id',
+                ref: `id`,
 
                 // List of keys to index. The values of the keys are taken from the
                 // normalizer function below.
                 // Default: all fields
-                index: ['lowerTitle'],
+                index: [`lowerTitle`],
 
                 // List of keys to store and make available in your UI. The values of
                 // the keys are taken from the normalizer function below.
                 // Default: all fields
-                store: ['id', 'path', 'title'],
+                store: [`id`, `path`, `title`],
 
                 // Function used to map the result from the GraphQL query. This should
                 // return an array of items to index in the form of flat objects
                 // containing properties to index. The objects must contain the `ref`
                 // field above (default: 'id'). This is required.
-                normalizer: ({ data }) =>
-                data.allGhostPost.edges.map((edge) => ({
-                    id: edge.node.id,
-                    path: edge.node.slug,
-                    title: edge.node.title,
-                    lowerTitle: edge.node.title.toLowerCase()
-                })),
+                normalizer: ({ data }) => data.allGhostPost.edges.map((edge) => {
+                    return {
+                        id: edge.node.id,
+                        path: edge.node.slug,
+                        title: edge.node.title,
+                        lowerTitle: edge.node.title.toLowerCase(),
+                    }
+                }),
             },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // This plugin is currently causing issues: https://github.com/gatsbyjs/gatsby/issues/25360
         //`gatsby-plugin-offline`,
-        `gatsby-plugin-netlify-cache`
+        `gatsby-plugin-netlify-cache`,
     ],
 }
