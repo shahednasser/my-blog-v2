@@ -10,6 +10,7 @@ import { HoverOnAvatar } from 'gatsby-theme-try-ghost/src/components/common/effe
 import Img from 'gatsby-image'
 
 import AvatarIcon from 'gatsby-theme-try-ghost/src/components/common/icons/avatar-icon'
+import { ImgSharpInline } from 'gatsby-theme-try-ghost/src/components/common'
 
 const AuthorList = ({ authors, isPost }) => {
     const { basePath } = useOptions()
@@ -66,16 +67,11 @@ const AuthorList = ({ authors, isPost }) => {
                             }
                             { profileImg ? (
                                 <Link to={url} className={`${isPost && `author` || `static`}-avatar`}>
-                                    <figure>
-                                        <Img
-                                            style={{ position: `relative` }}
-                                            className="author-profile-image"
-                                            fluid={fluidProfileImg}
-                                            alt={author.name}
-                                            loading="eager"
-                                            durationFadeIn={0}
-                                        />
-                                    </figure>
+                                    <ImgSharpInline
+                                        className="author-profile-image"
+                                        fluidImg={fluidProfileImg}
+                                        alt={author.name}
+                                    />
                                 </Link>
                             ) : (
                                 <Link to={url} className={`${isPost && `author` || `static`}-avatar author-profile-image`}><AvatarIcon /></Link>
