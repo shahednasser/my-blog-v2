@@ -234,7 +234,7 @@ export const postQuery = graphql`
                     }
                 }
             }
-            primary_authors {
+            primary_author {
                 ...GhostAuthorFields
                 profileImageSharp {
                     base
@@ -269,7 +269,7 @@ export const postQuery = graphql`
                     }
                 }
             }
-            primary_authors {
+            primary_author {
                 ...GhostAuthorFields
                 profileImageSharp {
                     base
