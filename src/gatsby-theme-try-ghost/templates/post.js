@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
@@ -8,13 +8,11 @@ import { resolveUrl } from 'gatsby-theme-try-ghost/src/utils/routing'
 import useOptions from 'gatsby-theme-try-ghost/src/utils/use-options'
 import { useLang, get } from 'gatsby-theme-try-ghost/src/utils/use-lang'
 
-import { Layout, HeaderPost, AuthorList, PreviewPosts, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
+import { Layout, HeaderPost, AuthorList, PreviewPosts, ImgSharp, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
 import { Comments, TableOfContents, Subscribe } from 'gatsby-theme-try-ghost/src/components/common'
 
 import { StickyNavContainer, OverlayContainer } from 'gatsby-theme-try-ghost/src/components/common/effects'
 import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
-
-import Img from 'gatsby-image'
 
 import { PostClass } from 'gatsby-theme-try-ghost/src/components/common/helpers'
 import useCarbon from '../utils/useCarbon'
@@ -28,12 +26,12 @@ import useCarbon from '../utils/useCarbon'
 const Post = ({ data, location, pageContext }) => {
     const { basePath } = useOptions()
     const text = get(useLang())
-    const post = data.customPost
+    const post = data.ghostPost
     const prevPost = data.prev
     const nextPost = data.next
     const previewPosts = data.allGhostPost.edges
     const readingTime = readingTimeHelper(post).replace(`min read`,text(`MIN_READ`))
-    const featImg = post.featureImageSharp && post.featureImageSharp.publicURL || post.featureImageSharp
+    const featImg = post.featureImageSharp && post.featureImageSharp.publicURL || post.feature_image
     const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.childImageSharp && post.featureImageSharp.childImageSharp.fluid
     const postClass = PostClass({ tags: post.tags, isFeatured: featImg, isImage: featImg && true })
     const primaryTagCount = pageContext.primaryTagCount
@@ -52,6 +50,28 @@ const Post = ({ data, location, pageContext }) => {
     if (nextPost) {
         nextPost.collectionPath = pageContext.collectionPaths[nextPost.id]
     }
+
+    useEffect(() => {
+        const d = document,
+            ts = d.createElement(`script`)
+
+        ts.src = `https://platform-api.sharethis.com/js/sharethis.js#property=5fa59a268fbbd6001256e36a&product=inline-share-buttons`
+        ts.setAttribute(`async`, `async`);
+        (d.head || d.body).appendChild(ts)
+
+        return () => {
+            if (d.body.contains(ts)) {
+                d.body.removeChild(ts)
+            }
+
+            const stickyShare = d.getElementsByClassName(`st-sticky-share-buttons`)
+            if (stickyShare.length) {
+                for (let i = 0; i < stickyShare.length; i++) {
+                    d.body.removeChild(stickyShare[i])
+                }
+            }
+        }
+    }, [])
 
     return (
         <React.Fragment>
@@ -105,14 +125,7 @@ const Post = ({ data, location, pageContext }) => {
 
                                 { featImg &&
                                     <figure className="post-full-image">
-                                        <Img
-                                            style={{ position: `relative` }}
-                                            className="kg-card kg-code-card"
-                                            fluid={fluidFeatureImg}
-                                            alt={post.title}
-                                            loading="eager"
-                                            durationFadeIn={0}
-                                        />
+                                        <ImgSharp fluidClass="kg-card kg-code-card" fluidImg={fluidFeatureImg} srcImg={featImg} title={post.title}/>
                                     </figure>
                                 }
 
@@ -189,7 +202,6 @@ const Post = ({ data, location, pageContext }) => {
 
 Post.propTypes = {
     data: PropTypes.shape({
-        customPost: PropTypes.object.isRequired,
         ghostPost: PropTypes.object.isRequired,
         prev: PropTypes.object,
         next: PropTypes.object,
@@ -203,88 +215,8 @@ export default Post
 
 export const postQuery = graphql`
     query($slug: String!, $prev: String!, $next: String!, $tag: String!, $limit: Int!, $skip: Int!) {
-        customPost: ghostPost(slug: {eq: $slug}) {
-            ...GhostPostFields
-            featureImageSharp {
-                base
-                publicURL
-                imageMeta {
-                    width
-                    height
-                }
-                childImageSharp {
-                    fluid(maxWidth: 1040, quality: 90) {
-                        ...GatsbyImageSharpFluid_noBase64
-                    }
-                }
-            }
-            authors {
-                ...GhostAuthorFields
-                profileImageSharp {
-                    base
-                    publicURL
-                    imageMeta {
-                        width
-                        height
-                    }
-                    childImageSharp {
-                        fluid(maxWidth: 110, quality: 100) {
-                            ...GatsbyImageSharpFluid_noBase64
-                        }
-                    }
-                }
-            }
-            primary_author {
-                ...GhostAuthorFields
-                profileImageSharp {
-                    base
-                    publicURL
-                    imageMeta {
-                        width
-                        height
-                    }
-                    childImageSharp {
-                        fluid(maxWidth: 110, quality: 100) {
-                            ...GatsbyImageSharpFluid_noBase64
-                        }
-                    }
-                }
-            }
-        }
         ghostPost: ghostPost(slug: { eq: $slug }) {
             ...GhostPostFields
-            authors {
-                ...GhostAuthorFields
-                profileImageSharp {
-                    base
-                    publicURL
-                    imageMeta {
-                        width
-                        height
-                    }
-                    childImageSharp {
-                        fluid(maxWidth: 110, quality: 100) {
-                            ...GatsbyImageSharpFluid_noBase64
-                        }
-                    }
-                }
-            }
-            primary_author {
-                ...GhostAuthorFields
-                profileImageSharp {
-                    base
-                    publicURL
-                    imageMeta {
-                        width
-                        height
-                    }
-                    childImageSharp {
-                        fluid(maxWidth: 110, quality: 100) {
-                            ...GatsbyImageSharpFluid_noBase64
-                        }
-                    }
-                }
-            }
         }
         prev: ghostPost(slug: { eq: $prev }) {
             ...GhostPostFieldsForIndex

@@ -82,7 +82,8 @@ module.exports = {
             options: {
                 filter: node => (
                     node.internal.type === `GhostPost` ||
-                    node.internal.type === `GhostPage`
+                    node.internal.type === `GhostPage` ||
+                    node.internal.type === `GhostAuthor`
                 ),
                 plugins: [
                     {
