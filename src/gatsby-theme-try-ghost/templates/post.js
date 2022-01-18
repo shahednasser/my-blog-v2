@@ -218,32 +218,38 @@ export const postQuery = graphql`
                     }
                 }
             }
-            profileImageSharp {
-                base
-                publicURL
-                imageMeta {
-                    width
-                    height
-                }
-                childImageSharp {
-                    fluid(maxWidth: 110, quality: 100) {
-                        ...GatsbyImageSharpFluid_noBase64
+            author {
+                ...GhostAuthorFields
+                profileImageSharp {
+                    base
+                    publicURL
+                    imageMeta {
+                        width
+                        height
+                    }
+                    childImageSharp {
+                        fluid(maxWidth: 110, quality: 100) {
+                            ...GatsbyImageSharpFluid_noBase64
+                        }
                     }
                 }
             }
         }
         ghostPost: ghostPost(slug: { eq: $slug }) {
             ...GhostPostFields
-            profileImageSharp {
-                base
-                publicURL
-                imageMeta {
-                    width
-                    height
-                }
-                childImageSharp {
-                    fluid(maxWidth: 110, quality: 100) {
-                        ...GatsbyImageSharpFluid_noBase64
+            author {
+                ...GhostAuthorFields
+                profileImageSharp {
+                    base
+                    publicURL
+                    imageMeta {
+                        width
+                        height
+                    }
+                    childImageSharp {
+                        fluid(maxWidth: 110, quality: 100) {
+                            ...GatsbyImageSharpFluid_noBase64
+                        }
                     }
                 }
             }
