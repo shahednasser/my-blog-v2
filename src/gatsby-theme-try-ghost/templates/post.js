@@ -218,7 +218,23 @@ export const postQuery = graphql`
                     }
                 }
             }
-            author {
+            authors {
+                ...GhostAuthorFields
+                profileImageSharp {
+                    base
+                    publicURL
+                    imageMeta {
+                        width
+                        height
+                    }
+                    childImageSharp {
+                        fluid(maxWidth: 110, quality: 100) {
+                            ...GatsbyImageSharpFluid_noBase64
+                        }
+                    }
+                }
+            }
+            primary_authors {
                 ...GhostAuthorFields
                 profileImageSharp {
                     base
@@ -237,7 +253,23 @@ export const postQuery = graphql`
         }
         ghostPost: ghostPost(slug: { eq: $slug }) {
             ...GhostPostFields
-            author {
+            authors {
+                ...GhostAuthorFields
+                profileImageSharp {
+                    base
+                    publicURL
+                    imageMeta {
+                        width
+                        height
+                    }
+                    childImageSharp {
+                        fluid(maxWidth: 110, quality: 100) {
+                            ...GatsbyImageSharpFluid_noBase64
+                        }
+                    }
+                }
+            }
+            primary_authors {
                 ...GhostAuthorFields
                 profileImageSharp {
                     base
