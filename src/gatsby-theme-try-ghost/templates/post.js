@@ -52,9 +52,14 @@ const Post = ({ data, location, pageContext }) => {
     return (
         <React.Fragment>
             <MetaData data={data} location={location} type="article"/>
-            <Helmet>
+            <Helmet
+                link={post.canonical ? [{
+                    rel: `canonical`,
+                    key: post.canonical,
+                    href: post.canonical,
+                }] : []}
+            >
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
-                {post.canonical_url && <link rel="canonical" href={post.canonical_url} />}
             </Helmet>
             <StickyNavContainer throttle={300} isPost={true} activeClass="nav-post-title-active" render={ sticky => (
                 <OverlayContainer render={ overlay => (
