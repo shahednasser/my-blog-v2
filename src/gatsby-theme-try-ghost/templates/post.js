@@ -53,10 +53,10 @@ const Post = ({ data, location, pageContext }) => {
         <React.Fragment>
             <MetaData data={data} location={location} type="article"/>
             <Helmet
-                link={post.canonical ? [{
+                link={post.canonical_url ? [{
                     rel: `canonical`,
-                    key: post.canonical,
-                    href: post.canonical,
+                    key: post.canonical_url,
+                    href: post.canonical_url,
                 }] : []}
             >
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
