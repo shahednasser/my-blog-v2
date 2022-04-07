@@ -186,5 +186,12 @@ module.exports = {
         // This plugin is currently causing issues: https://github.com/gatsbyjs/gatsby/issues/25360
         //`gatsby-plugin-offline`,
         `gatsby-plugin-netlify-cache`,
+        `gatsby-plugin-react-helmet`,
+        {
+            resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+            options: {
+                siteUrl: `https://blog.shahednasser.com`,
+            },
+        },
     ],
 }
