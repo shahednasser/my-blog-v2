@@ -1,23 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { AuthorList, HeaderPost, Layout, PreviewPosts, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
+import { Comments, Subscribe, TableOfContents } from 'gatsby-theme-try-ghost/src/components/common'
 import { Link, graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
+import { OverlayContainer, StickyNavContainer } from 'gatsby-theme-try-ghost/src/components/common/effects'
+import { get, useLang } from 'gatsby-theme-try-ghost/src/utils/use-lang'
 
+import { Helmet } from 'react-helmet'
+import Img from 'gatsby-image'
+import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
+import { PostClass } from 'gatsby-theme-try-ghost/src/components/common/helpers'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 import { resolveUrl } from 'gatsby-theme-try-ghost/src/utils/routing'
-import useOptions from 'gatsby-theme-try-ghost/src/utils/use-options'
-import { useLang, get } from 'gatsby-theme-try-ghost/src/utils/use-lang'
-
-import { Layout, HeaderPost, AuthorList, PreviewPosts, RenderContent } from 'gatsby-theme-try-ghost/src/components/common'
-import { Comments, TableOfContents, Subscribe } from 'gatsby-theme-try-ghost/src/components/common'
-
-import { StickyNavContainer, OverlayContainer } from 'gatsby-theme-try-ghost/src/components/common/effects'
-import { MetaData } from 'gatsby-theme-try-ghost/src/components/common/meta'
-
-import Img from 'gatsby-image'
-
-import { PostClass } from 'gatsby-theme-try-ghost/src/components/common/helpers'
 import useCarbon from '../utils/useCarbon'
+import useOptions from 'gatsby-theme-try-ghost/src/utils/use-options'
 
 /**
 * Single post view (/:slug)
@@ -58,6 +54,7 @@ const Post = ({ data, location, pageContext }) => {
             <MetaData data={data} location={location} type="article"/>
             <Helmet>
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
+                {post.canonical_url && <link rel="canonical" href={post.canonical_url} />}
             </Helmet>
             <StickyNavContainer throttle={300} isPost={true} activeClass="nav-post-title-active" render={ sticky => (
                 <OverlayContainer render={ overlay => (
